@@ -10,15 +10,16 @@ namespace WebAPISQLServer.Controllers
 {
     public class EmployeesController : ApiController
     {
-        public IEnumerable<Employees> Get()
+        [HttpGet]
+        public IEnumerable<Employees> AllEmployees()
         {
             using (EmployeesDBEntities entities = new EmployeesDBEntities())
             {
                 return entities.Employees.ToList();
             }
         }
-
-        public HttpResponseMessage Get(int id)
+        [HttpGet]
+        public HttpResponseMessage EmployeesById(int id)
         {
             using (EmployeesDBEntities entities = new EmployeesDBEntities())
             {
