@@ -57,5 +57,31 @@ namespace WebAPISQLServer.Controllers
             }
 
         }
+
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                using (EmployeesDBEntities entities = new EmployeesDBEntities())
+                {
+                    var entity = entities.Employees.FirstOrDefault(e => e.ID == id);
+                    if (entity == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Format("Employee with id = {0}, not exist to DELETE", id));
+                    }
+                    else
+                    {
+                        entities.Employees.Remove(entity);
+                        entities.SaveChanges();
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }
