@@ -11,11 +11,21 @@ namespace WebAPISQLServer.Controllers
     public class EmployeesController : ApiController
     {
         [HttpGet]
-        public IEnumerable<Employees> AllEmployees()
+        public HttpResponseMessage AllEmployees(string gender = "All")
         {
             using (EmployeesDBEntities entities = new EmployeesDBEntities())
             {
-                return entities.Employees.ToList();
+                switch (gender.ToLower())
+                {
+                    case "all":
+                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.ToList());
+                    case "male":
+                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "male").ToList());
+                    case "female":
+                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
+                    default:
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, string.Format("Value for gender must be all, male or female: {0}", gender));
+                }
             }
         }
         [HttpGet]
