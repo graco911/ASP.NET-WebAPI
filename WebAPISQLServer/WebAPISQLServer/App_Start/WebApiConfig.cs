@@ -37,6 +37,8 @@ namespace WebAPISQLServer
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Filters.Add(new RequireHttpsAttribute());
+
             //config.Formatters.Add(new CustomJsonFormatter());
             ////config.Formatters.Remove(config.Formatters.XmlFormatter);
             ////config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
