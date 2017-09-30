@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using WebApiContrib.Formatting.Jsonp;
 
 namespace WebAPISQLServer
 {
@@ -37,8 +38,8 @@ namespace WebAPISQLServer
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Filters.Add(new RequireHttpsAttribute());
-
+            var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            config.Formatters.Insert(0, jsonpFormatter);
             //config.Formatters.Add(new CustomJsonFormatter());
             ////config.Formatters.Remove(config.Formatters.XmlFormatter);
             ////config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));

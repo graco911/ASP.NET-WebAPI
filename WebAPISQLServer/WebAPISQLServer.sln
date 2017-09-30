@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPISQLServer", "WebAPISQLServer\WebAPISQLServer.csproj", "{1DEB7B5B-D23C-431E-A5ED-D8EDE06D76F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDataAccess", "EmployeesDataAccess\EmployeesDataAccess.csproj", "{B43790E1-51D6-4F77-93F6-21C3455E66AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "ClientApplication\ClientApplication.csproj", "{BA3A0F97-BF41-48E5-8B75-5D29D27EA39D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B43790E1-51D6-4F77-93F6-21C3455E66AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B43790E1-51D6-4F77-93F6-21C3455E66AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B43790E1-51D6-4F77-93F6-21C3455E66AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3A0F97-BF41-48E5-8B75-5D29D27EA39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3A0F97-BF41-48E5-8B75-5D29D27EA39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3A0F97-BF41-48E5-8B75-5D29D27EA39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3A0F97-BF41-48E5-8B75-5D29D27EA39D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

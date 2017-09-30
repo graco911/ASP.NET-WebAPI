@@ -11,7 +11,7 @@
             $('#btn').click(function () {
                 $.ajax({
                     type: 'GET',
-                    url: 'api/Employees',
+                    url: 'http://localhost:60824/api/Employees',
                     dataType: 'jsonp',
                     success: function (data) {
                         ulEmployees.empty();
@@ -22,6 +22,7 @@
                     }
                 });
             });
+
             $('#btnClear').click(function () {
                 ulEmployees.empty();
             });
