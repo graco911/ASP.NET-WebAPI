@@ -6,6 +6,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Mvc;
 using WebApiContrib.Formatting.Jsonp;
 
 namespace WebAPISQLServer
@@ -41,6 +42,8 @@ namespace WebAPISQLServer
 
             EnableCorsAttribute cors = new EnableCorsAttribute("*","*","*");
             config.EnableCors(cors);
+
+            config.Filters.Add(new RequiredHttpsAttribute());
 
 
             //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
