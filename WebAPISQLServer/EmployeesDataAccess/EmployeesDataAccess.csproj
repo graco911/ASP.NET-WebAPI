@@ -68,6 +68,9 @@
       <DependentUpon>EmployeeData Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="USERS.cs">
+      <DependentUpon>EmployeeData Model.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="EmployeeData Model.edmx">

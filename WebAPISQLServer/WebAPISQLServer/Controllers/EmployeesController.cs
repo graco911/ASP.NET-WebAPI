@@ -5,17 +5,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using EmployeesDataAccess;
+using System.Threading;
+using System.Web.Http.Cors;
 
 namespace WebAPISQLServer.Controllers
 {
+    [EnableCorsAttribute("*","*","*")]
     public class EmployeesController : ApiController
     {
+        [BasicAuthenticationAtribute]
         [HttpGet]
-        public HttpResponseMessage AllEmployees(string gender = "All")
+        public HttpResponseMessage Get(string gender = "All")
         {
+            string username = Thread.CurrentPrincipal.Identity.Name;
+            
             using (EmployeesDBEntities entities = new EmployeesDBEntities())
             {
-                switch (gender.ToLower())
+                switch (username.ToLower())
                 {
                     case "all":
                         return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.ToList());
@@ -24,7 +30,7 @@ namespace WebAPISQLServer.Controllers
                     case "female":
                         return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
                     default:
-                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, string.Format("Value for gender must be all, male or female: {0}", gender));
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
             }
         }
