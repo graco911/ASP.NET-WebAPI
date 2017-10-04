@@ -9,6 +9,8 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="well">
             <input type="button" id="btnLoadEmployees" class="btn btn-success" value="Load Employees" />
+            <span id="spanusername" class="text-muted"></span>
+            <input type="button" id="btnLogoff" class="btn btn-success pull-right" value="Log Off" />
             <div class="well hidden" id="divData">
                 <table class="table table-bordered" id="tblData">
                     <thead>
@@ -55,14 +57,19 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('#spanusername').text('Hello ' + sessionStorage.getItem('username'));
             if (sessionStorage.getItem('accessToken') == null) {
                 window.location.href = "Login.html";
             }
 
-            $('#errorModal').on('hidden.bs.modal', function () {
+            $('#btnLogoff').click(function () {
+                sessionStorage.removeItem("accessToken");
                 window.location.href = "Login.html";
             });
 
+            $('#errorModal').on('hidden.bs.modal', function () {
+                window.location.href = "Login.html";
+            });
             $('#linkClose').click(function () {
                 $('#divError').hide('fade');
             });
@@ -95,8 +102,6 @@
                     }
                 });
             });
-
-
         });
     </script>
 </body>

@@ -62,10 +62,14 @@
                         grant_Type: 'password'
                     },
                     success: function (response) {
-                        //$('#divErrorText').text(JSON.stringify(response));
-                        //$('#divError').show('fade');
+                        $('#divErrorText').text(JSON.stringify(response));
+                        //////$('#divError').show('fade');
                         sessionStorage.setItem('accessToken', response.access_token);
+                        sessionStorage.setItem('username', JSON.stringify(response.userName));
                         window.location.href = "Data.html";
+
+                        //$('#divErrorText').text(response.text);
+                        //$('#divError').show('fade');
                     },
                     error: function (jqXHR) {
                         $('#divErrorText').text(jqXHR.responseText);
